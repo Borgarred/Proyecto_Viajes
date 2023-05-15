@@ -6,6 +6,7 @@ public class menu_principal extends Usuario {
 
 	int opcion1;
 	int opcion2;
+	int opcion3;
 
 	public menu_principal() {
 	}
@@ -15,7 +16,7 @@ public class menu_principal extends Usuario {
 	}
 
 	public void MenuInicio() { // METODO
-		
+
 		Scanner escaner1 = new Scanner(System.in);
 
 		System.out.print("------MENÚ INICIO------" + "\n1. Registrar Nuevo Usuario." + "\n2. Iniciar Sesión."
@@ -24,15 +25,27 @@ public class menu_principal extends Usuario {
 	}
 
 	public void MenuViajes(int indice, Usuario user) { // METODO
-		
+
 		Scanner escaner2 = new Scanner(System.in);
 
-		System.out.print("¡Hola! " + user.arrayUsuarios[indice].getNombre() + " elige una de nuestras opciones: "
-				+ " \n(1)-Viajar \n(2)-Recomendaciones \n(3)-Sorteo \n(4)-Datos del Usuario \n(5)-Salir" + "\n\nEscoja una opción: ");
+		System.out.print("--------Menú Usuario-------\n"
+				+ "¡Hola! " + user.arrayUsuarios[indice].getNombre() + " elige una de nuestras opciones: "
+				+ " \n(1)-Viajar \n(2)-Recomendaciones \n(3)-Sorteo \n(4)-Datos del Usuario \n(5)-Salir"
+				+ "\n\nEscoja una opción: ");
 		this.opcion2 = escaner2.nextInt();
+		
 
 	}
-	
 
+	public void MenuUsuario() {
+
+		Scanner escaner3 = new Scanner(System.in);
+
+		System.out.print("--------Menú Usuario-------"
+				+ "\n(1)-Datos Usuario \n(2)-Cambiar Datos Usuario \n(3)-Ver Historial Viajes \n(4)-Eliminar Usuario \n(5)-Salir al menú viajes"
+				+ "\n\nEscoja una opción: ");
+		this.opcion3 = escaner3.nextInt();
+
+	}
 
 }

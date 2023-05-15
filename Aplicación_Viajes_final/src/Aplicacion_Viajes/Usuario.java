@@ -1,4 +1,5 @@
 package Aplicacion_Viajes;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +9,6 @@ public class Usuario {
 
 	DatosUsuario arrayUsuarios[] = new DatosUsuario[20];
 
-	Scanner sc = new Scanner(System.in);
 	protected String email;
 	protected String contraseña;
 	protected String nombre;
@@ -23,15 +23,17 @@ public class Usuario {
 	}
 
 	public Usuario(String email, String contraseña, String nombre, String apellidos, String DNI, int edad) {
-    	this.email = email;
-    	this.contraseña = contraseña;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.DNI = DNI;
-        this.edad = edad;
-    }
+		this.email = email;
+		this.contraseña = contraseña;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.DNI = DNI;
+		this.edad = edad;
+	}
 
 	public void NuevoUsuario() {
+		
+		Scanner scNuevoUsuario = new Scanner(System.in);
 
 		int indice = 0;
 
@@ -43,26 +45,26 @@ public class Usuario {
 		}
 
 		System.out.print("Introduzca un email: ");
-        String email = sc.nextLine();
+		String email = scNuevoUsuario.nextLine();
 
-        System.out.print("Inserte una contraseña: ");
-        String contraseña = sc.nextLine();
+		System.out.print("Inserte una contraseña: ");
+		String contraseña = scNuevoUsuario.nextLine();
 
-        System.out.print("Introduzca su nombre: ");
-        String nombre = sc.nextLine();
+		System.out.print("Introduzca su nombre: ");
+		String nombre = scNuevoUsuario.nextLine();
 
-        System.out.print("Introduzca sus apellidos: ");
-        String apellidos = sc.nextLine();
+		System.out.print("Introduzca sus apellidos: ");
+		String apellidos = scNuevoUsuario.nextLine();
 
-        System.out.print("Introduzca su DNI: ");
-        String DNI = sc.nextLine();
+		System.out.print("Introduzca su DNI: ");
+		String DNI = scNuevoUsuario.nextLine();
 
-        System.out.print("Introduzca su edad: ");
-        int edad = sc.nextInt();
+		System.out.print("Introduzca su edad: ");
+		int edad = scNuevoUsuario.nextInt();
 
-        sc.nextLine();
+		scNuevoUsuario.nextLine();
 
-        System.out.println();
+		System.out.println();
 
 		this.arrayUsuarios[indice] = new DatosUsuario(email, contraseña, nombre, apellidos, DNI, edad);
 		InsertarDatos(indice);
@@ -71,24 +73,26 @@ public class Usuario {
 
 	public void ListaUsuarios() {
 
-        int i = 0;
+		int i = 0;
 
-        System.out.println("--------Lista de usuarios:--------");
-        while (i < numeroUsuarios) {
-            System.out.println(i + 1 + "º. " + arrayUsuarios[i].nombre + " " + arrayUsuarios[i].apellidos);
-            i = i + 1;
-        }
-    }
+		System.out.println("--------Lista de usuarios:--------");
+		while (i < numeroUsuarios) {
+			System.out.println(i + 1 + "º. " + arrayUsuarios[i].nombre + " " + arrayUsuarios[i].apellidos);
+			i = i + 1;
+		}
+	}
 
 	public int IniciarSesion() {
+		
+		Scanner scInicioUsuario = new Scanner(System.in);
 
 		int indice = 0;
 
 		System.out.print("Introduzca su email: ");
-		String email = sc.nextLine();
+		String email = scInicioUsuario.nextLine();
 
 		System.out.print("Introduzca sus contraseña: ");
-		String contraseña = sc.nextLine();
+		String contraseña = scInicioUsuario.nextLine();
 
 		boolean salir = false;
 
@@ -97,7 +101,12 @@ public class Usuario {
 				if (arrayUsuarios[i].email.equals(email) && arrayUsuarios[i].contraseña.equals(contraseña)) {
 					this.email = email;
 					this.contraseña = contraseña;
-					System.out.println("¡Has iniciado sesión con " + arrayUsuarios[i].nombre + " " + arrayUsuarios[i].apellidos + "!");
+					this.nombre = arrayUsuarios[i].nombre;
+					this.apellidos = arrayUsuarios[i].apellidos;
+					this.DNI = arrayUsuarios[i].DNI;
+					this.edad = arrayUsuarios[i].edad;
+					System.out.println("¡Has iniciado sesión con " + arrayUsuarios[i].nombre + " "
+							+ arrayUsuarios[i].apellidos + "!");
 					salir = true;
 					indice = i;
 				}
@@ -109,17 +118,92 @@ public class Usuario {
 		}
 		return indice;
 	}
-	
-	public void MenuUsuario() {
-		System.out.println("--------Menú Usuario-------"
-				+ "\n(1)-Datos Usuario \n(2)-Cambiar Datos Usuario \n(3)-Ver Historial Viajes \n(4)-Eliminar Usuario");
-	}
-	
+
 	public void DatosUsuario() {
-		
+
+		System.out.println("\nTus Datos: \n-Nombre: " + this.nombre + " " + this.apellidos + "\n-Email: " + this.email
+				+ "\n-DNI: " + this.DNI + "\n-Edad: " + this.edad);
 	}
-	
-	
+
+	public void CambiarDatos() {
+
+		Scanner scOpcion = new Scanner(System.in);
+		Scanner scCambiarDatos = new Scanner(System.in);
+		
+		System.out.print(
+				"¿Qué dato desea cambiar?: \n(1)-Nombre y apellido \n(2)-Email \n(3)-Contraseña \n(4)-DNI \n(6)-Edad \nElija una opción: ");
+		int opcion = scOpcion.nextInt();
+
+		switch (opcion) {
+
+		case 1: {
+			System.out.print("Introduzca su nuevo nombre: ");
+			this.nombre = scCambiarDatos.nextLine();
+			
+			System.out.println();
+
+			System.out.print("Introduzca sus nuevos apellidos: ");
+			this.apellidos = scCambiarDatos.nextLine();
+			break;
+
+		}
+
+		case 2: {
+			System.out.print("Introduzca su nuevo email: ");
+			this.email = scCambiarDatos.nextLine();
+			break;
+		}
+
+		case 3: {
+
+			boolean salir = false;
+			while (salir == false) {
+
+				String contraseña;
+				System.out.print("Introduce su antigua contraseña: ");
+				contraseña = scCambiarDatos.nextLine();
+
+				if (contraseña != this.contraseña) {
+					System.err.println("CONTRASEÑA INCORRECTA");
+				}
+
+				else {
+					System.out.print("Introduzca su nueva contraseña: ");
+					this.contraseña = scCambiarDatos.nextLine();
+					salir = true;
+				}
+			}
+			break;
+		}
+
+		case 4: {
+			System.out.print("Introduzca su nuevo DNI: ");
+			this.DNI = scCambiarDatos.nextLine();
+			break;
+		}
+
+		case 5: {
+			System.out.print("Introduzca su nuevo edad: ");
+			this.edad = scCambiarDatos.nextInt();
+			break;
+		}
+
+		}
+
+	}
+
+	public void EliminarUsuario() {
+
+		this.email = null;
+		this.contraseña = null;
+		this.nombre = null;
+		this.apellidos = null;
+		this.DNI = null;
+		this.edad = 0;
+		System.out.println("Usuario eliminado...");
+
+	}
+
 	public void InsertarDatos(int indice) {
 
 		BufferedWriter out = null;
@@ -128,7 +212,8 @@ public class Usuario {
 			out = new BufferedWriter(new FileWriter("C:\\Users\\garramiola.rebor\\Desktop\\SesionesRegistradas.txt"));
 
 			for (int i = 0; i <= indice; i++) {
-				out.write("EMAIL:" + arrayUsuarios[i].getEmail() + " CONSTRASEÑA:" + arrayUsuarios[i].getContraseña() + " NOMBRE:" + arrayUsuarios[i].getNombre() + " APELLIDOS:" + arrayUsuarios[i].getApellido() 
+				out.write("EMAIL:" + arrayUsuarios[i].getEmail() + " CONSTRASEÑA:" + arrayUsuarios[i].getContraseña()
+						+ " NOMBRE:" + arrayUsuarios[i].getNombre() + " APELLIDOS:" + arrayUsuarios[i].getApellido()
 						+ " DNI:" + arrayUsuarios[i].getDNI() + " EDAD:" + arrayUsuarios[i].getEdad() + "\n");
 			}
 

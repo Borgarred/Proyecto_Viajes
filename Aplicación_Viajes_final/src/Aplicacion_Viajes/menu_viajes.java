@@ -104,8 +104,8 @@ public class menu_viajes extends Usuario {
 
 		System.out.println();
 		Date hora = new Date();
-		System.out.println("¡Tu viaje ha sido completado! \nTienes un viaje en el mes de " + mes + ", desde el dia " + diaIda
-				+ " hasta el dia " + diaVuelta);
+		System.out.println("¡Tu viaje ha sido completado! \nTienes un viaje en el mes de " + mes + ", desde el dia "
+				+ diaIda + " hasta el dia " + diaVuelta);
 		System.out.println(hora);
 
 		System.out.println();
@@ -202,11 +202,16 @@ public class menu_viajes extends Usuario {
 					break;
 				}
 				case 2: {
+					String eliminado = pila.pop();
+					System.out.println("Regalos del sorteo restantes " + pila);
 					System.out.println("Lo sentimos ese regalo no tiene premio...\n");
 					resultado = true;
 					break;
 				}
 				case 3: {
+					String eliminado = pila.pop();
+
+					System.out.println("Regalos del sorteo restantes " + pila);
 					System.out.println("Lo sentimos ese regalo no tiene premio...\n");
 					resultado = true;
 					break;

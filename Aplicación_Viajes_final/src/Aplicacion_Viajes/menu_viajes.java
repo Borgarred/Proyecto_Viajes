@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.Date;
 
 public class menu_viajes extends Usuario {
 
@@ -16,6 +17,7 @@ public class menu_viajes extends Usuario {
 	int destino;
 	int playa;
 	public int numeroRegalo;
+	int hora;
 
 	public menu_viajes() {
 	}
@@ -101,8 +103,11 @@ public class menu_viajes extends Usuario {
 		int diaVuelta = escaner2.nextInt();
 
 		System.out.println();
-		System.out.println("¡Ya hemos organizado tu viaje! \nViaje a " + this.destino + " en el mes de " + mes
-				+ ", desde el dia " + diaIda + " hasta el dia " + diaVuelta);
+		Date hora = new Date();
+		System.out.println("¡Tu viaje ha sido completado! \nTienes un viaje en el mes de " + mes + ", desde el dia " + diaIda
+				+ " hasta el dia " + diaVuelta);
+		System.out.println(hora);
+
 		System.out.println();
 	}
 

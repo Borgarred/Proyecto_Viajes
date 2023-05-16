@@ -53,14 +53,14 @@ public abstract class Main {
 		while (salir2 == false) {
 
 			try {
-
-				Menu1.opcion3 = 0;
+				
 				Menu1.MenuViajes(indice_usuario, usuario0);
 				System.out.println();
+				
 				if (Menu1.opcion2 < 1 || Menu1.opcion2 > 5) {
 					System.err.println("Introduzca una opción valida entre 1º y 5º");
-
 				}
+				
 				switch (Menu1.opcion2) {
 
 				case 1: {
@@ -88,6 +88,11 @@ public abstract class Main {
 					while (salir4 == false) {
 
 						Menu1.MenuUsuario();
+						System.out.println();
+						
+						if (Menu1.opcion3 < 1 || Menu1.opcion3 > 5) {
+							System.err.println("Introduzca una opción valida entre 1º y 5º");
+						}
 
 						switch (Menu1.opcion3) {
 

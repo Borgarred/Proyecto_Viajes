@@ -15,129 +15,136 @@ public abstract class Main {
 
 		while (salir == false) {
 
-			try {
+			boolean salir3 = false;
+			while (salir3 == false) {
 
-				Menu1.MenuInicio();
-				if (Menu1.opcion1 != 1 && Menu1.opcion1 != 2) {
-					System.err.println("Elija una de las opcióne correctamente \n");
-				}
+				try {
 
-				switch (Menu1.opcion1) {
-
-				case 1: {
-
-					usuario0.NuevoUsuario();
-					break;
-
-				}
-
-				case 2: {
-
-					indice_usuario = usuario0.IniciarSesion();
-
-					if (indice_usuario == -1) {
-						System.err.println("USUARIO NO REGISTRADO");
-						System.out.println();
-					} else {
-						salir = true;
+					Menu1.MenuInicio();
+					if (Menu1.opcion1 != 1 && Menu1.opcion1 != 2) {
+						System.err.println("Elija una de las opcióne correctamente \n");
 					}
+
+					switch (Menu1.opcion1) {
+
+					case 1: {
+						usuario0.NuevoUsuario();
+						break;
+					}
+
+					case 2: {
+						indice_usuario = usuario0.IniciarSesion();
+
+						if (indice_usuario == -1) {
+							System.err.println("USUARIO NO REGISTRADO");
+							System.out.println();
+						} else {
+							salir3 = true;
+						}
+					}
+
+					}
+				} catch (Exception e) {
+					System.err.println("Introduce una opción válida, (1 o 2)");
+					System.out.println();
 				}
-				}
-			} catch (Exception e) {
-				System.err.println("Introduce una opción válida, (1 o 2)");
-				System.out.println();
 			}
-		}
-		System.out.println();
-		
-		boolean salir1 = false;
 
-		while (salir1 == false) {
+			System.out.println();
 
-			try {
-				
-				Menu1.MenuViajes(indice_usuario, usuario0);
-				System.out.println();
-				
-				if (Menu1.opcion2 < 1 || Menu1.opcion2 > 5) {
-					System.err.println("Introduzca una opción valida entre 1º y 5º");
-				}
-				
-				switch (Menu1.opcion2) {
+			boolean salir1 = false;
 
-				case 1: {
-					boolean resultado = false;
+			while (salir1 == false) {
 
-					while (resultado == false) {
-						resultado = viajes.menuDestino();
+				try {
 
-						if (resultado == true)
-							viajes.menuFecha();
+					Menu1.MenuViajes(indice_usuario, usuario0);
+					System.out.println();
+
+					if (Menu1.opcion2 < 1 || Menu1.opcion2 > 5) {
+						System.err.println("Introduzca una opción valida entre 1º y 5º");
 					}
-					break;
-				}
-				case 2: {
-					viajes.menuRecomendaciones();
-					break;
-				}
-				case 3: {
-					viajes.menuSorteo();
-					break;
-				}
 
-				case 4: {
+					switch (Menu1.opcion2) {
 
-					boolean salir2 = false;
-					
-					while (salir2 == false) {
+					case 1: {
+						boolean resultado = false;
 
-						Menu1.MenuUsuario();
-						System.out.println();
-						
-						if (Menu1.opcion3 < 1 || Menu1.opcion3 > 5) {
-							System.err.println("Introduzca una opción valida entre 1º y 5º");
+						while (resultado == false) {
+							resultado = viajes.menuDestino();
+
+							if (resultado == true)
+								viajes.menuFecha();
 						}
-
-						switch (Menu1.opcion3) {
-
-						case 1: {
-							usuario0.DatosUsuario();
-							break;
-						}
-
-						case 2: {
-							usuario0.CambiarDatos();
-							break;
-						}
-
-						case 3: {
-							break;
-						}
-
-						case 4: {
-							usuario0.EliminarUsuario();
-							break;
-						}
-
-						case 5: {
-							salir2 = true;
-							break;
-						}
-
-						}
+						break;
 					}
-					break;
-				}
-				case 5: {
-					System.out.print("¡Gracias por visitarnos, hasta pronto!");
-					salir1 = true;
-					break;
+					case 2: {
+						viajes.menuRecomendaciones();
+						break;
+					}
+					case 3: {
+						viajes.menuSorteo();
+						break;
+					}
+
+					case 4: {
+
+						boolean salir2 = false;
+
+						while (salir2 == false) {
+
+							Menu1.MenuUsuario();
+							System.out.println();
+
+							if (Menu1.opcion3 < 1 || Menu1.opcion3 > 5) {
+								System.err.println("Introduzca una opción valida entre 1º y 5º");
+							}
+
+							switch (Menu1.opcion3) {
+
+							case 1: {
+								usuario0.DatosUsuario();
+								break;
+							}
+
+							case 2: {
+								usuario0.CambiarDatos();
+								break;
+							}
+
+							case 3: {
+								break;
+							}
+
+							case 4: {
+								usuario0.EliminarUsuario();
+								salir2 = true;
+								salir1 = true;
+								break;
+							}
+
+							case 5: {
+								salir2 = true;
+								break;
+							}
+
+							}
+						}
+						break;
+					}
+
+					case 5: {
+						System.out.print("¡Gracias por visitarnos, hasta pronto!");
+						salir1 = true;
+						break;
+					}
+
+					}
+				} catch (Exception e) {
+					System.err.println("Introduce una opción válida");
+					System.out.println(e);
 				}
 
-				}
-			} catch (Exception e) {
-				System.err.println("Introduce una opción válida");
-				System.out.println();
 			}
 		}
 

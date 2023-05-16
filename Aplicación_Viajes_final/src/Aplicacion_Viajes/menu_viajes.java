@@ -9,17 +9,53 @@ import java.util.Date;
 public class menu_viajes extends Usuario {
 
 	protected Usuario usuario;
-	protected int tipo;
-	String nombreHotel;
-	String localidad;
-	int fecha;
-	String comunidad;
-	int destino;
-	int playa;
-	public int numeroRegalo;
-	int hora;
+	protected String comunidad;
+	protected String localidad;
+	protected int playa;
+	protected int numeroRegalo;
+	protected String FechaVuelta;
+	protected String FechaIda;
+	protected Date hora;
+
+	int numeroViajes = 0;
+
+	DatosViajes arrayViajes[] = new DatosViajes[100];
 
 	public menu_viajes() {
+	}
+
+	public void copiarArrayUsuarios(Usuario user) {
+
+		System.arraycopy(user.arrayUsuarios, 0, this.arrayUsuarios, 0, user.arrayUsuarios.length);
+		this.email = user.email;
+		this.contraseña = user.contraseña;
+	}
+
+	public void GuardarViaje(Usuario user) {
+
+		if (this.arrayViajes[numeroViajes] == null) {
+			this.arrayViajes[numeroViajes] = new DatosViajes(user, this.comunidad, this.localidad, this.FechaIda,
+					this.FechaVuelta, this.hora);
+			numeroViajes = numeroViajes + 1;
+		}
+	}
+
+	public void historialViajes() {
+
+		System.out.println("Historial de viajes:");
+
+		for (int i = 0; i <= numeroViajes; i++) {
+			if (this.arrayViajes[i] != null) {
+				if (arrayViajes[i].usuario.email.contentEquals(this.email) && arrayViajes[i].usuario.contraseña.contentEquals(this.contraseña)) {
+					System.out.println(
+							"COMUNIDAD: " + arrayViajes[i].comunidad + " LOCALIDAD: " + arrayViajes[i].localidad
+									+ " FECHA DE IDA: " + arrayViajes[i].FechaIda + " FECHA DE VUELTA: "
+									+ arrayViajes[i].FechaVuelta + " DÍA DE CREACIÓN: " + arrayViajes[i].hora);
+				}
+			}
+		}
+		System.out.println();
+
 	}
 
 	public boolean menuDestino() {
@@ -45,9 +81,9 @@ public class menu_viajes extends Usuario {
 						System.out.print("\n--OPCIONES PARA VIAJAR EN ANDALUCIA--"
 								+ "\nPara el destino Andalucía tenemos viajes a Cadiz o Córdoba"
 								+ "\n¿Qué destino prefieres? \n(1)Cadiz \n(2)Córdoba \nOpción: ");
-						destino = escaner1.nextInt();
+						int opcionDestino = escaner1.nextInt();
 
-						if (destino == 1 || destino == 2) {
+						if (opcionDestino == 1 || opcionDestino == 2) {
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -61,9 +97,9 @@ public class menu_viajes extends Usuario {
 						System.out.print("\n--OPCIONES PARA VIAJAR EN CANARIAS--"
 								+ "\nPara el destino Canarias tenemos viajes a Tenerife o La Palma"
 								+ "\n¿Qué destino prefieres? \n(1)Tenerife \n(2)La Palma \nOpción: ");
-						destino = escaner1.nextInt();
+						int opcionDestino = escaner1.nextInt();
 
-						if (destino == 1 || destino == 2) {
+						if (opcionDestino == 1 || opcionDestino == 2) {
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -77,9 +113,9 @@ public class menu_viajes extends Usuario {
 						System.out.print("\n--OPCIONES PARA VIAJAR EN MADRID--"
 								+ "Para el destino Madrid tenemos viajes a Madrid Capital o Getafe"
 								+ "\n¿Qué destino prefieres? \n(1)Madrid Capital \n(2)Getafe \nOpción: ");
-						destino = escaner1.nextInt();
+						int opcionDestino = escaner1.nextInt();
 
-						if (destino == 1 || destino == 2) {
+						if (opcionDestino == 1 || opcionDestino == 2) {
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -93,9 +129,9 @@ public class menu_viajes extends Usuario {
 						System.out.print("\n--OPCIONES PARA VIAJAR EN EXTREMADURA--"
 								+ "\nPara el destino Extremadura tenemos viajes a Cáceres o Badajoz"
 								+ "\n¿Qué destino prefieres? \n(1)Cáceres \n(2)Badajoz \nOpción: ");
-						destino = escaner1.nextInt();
+						int opcionDestino = escaner1.nextInt();
 
-						if (destino == 1 || destino == 2) {
+						if (opcionDestino == 1 || opcionDestino == 2) {
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -116,19 +152,18 @@ public class menu_viajes extends Usuario {
 
 		Scanner escaner2 = new Scanner(System.in);
 
-		System.out.print("\n¡Perfecto! Vamos a elegir fechas para tu estancia: \nIntroduce en que mes vas a viajar: ");
-		String mes = escaner2.nextLine();
+		System.out.print("\n¡Perfecto! Vamos a elegir fechas para tu estancia \n");
 
 		System.out.print("Selecciona la fecha de entrada: ");
-		int diaIda = escaner2.nextInt();
+		this.FechaIda = escaner2.nextLine();
 
 		System.out.print("Selecciona la fecha de salida: ");
-		int diaVuelta = escaner2.nextInt();
+		this.FechaVuelta = escaner2.nextLine();
 
-		Date hora = new Date();
-		System.out.println("\n¡Tu viaje ha sido completado! \nTienes un viaje en el mes de " + mes + ", desde el dia "
-				+ diaIda + " hasta el dia " + diaVuelta);
-		System.out.println("Creado el "+ hora + "\n");
+		this.hora = new Date();
+		System.out.println("\n¡Tu viaje ha sido completado! \nTienes un viaje desde el dia " + this.FechaIda
+				+ " hasta el dia " + this.FechaVuelta);
+		System.out.println("Creado el " + this.hora + "\n");
 
 	}
 
@@ -141,20 +176,20 @@ public class menu_viajes extends Usuario {
 				+ "¿Prefieres un destino con playa?\n(1)Si \n(2)No \nOpción: ");
 		playa = escaner3.nextInt();
 		System.out.print("\n¿Prefieres un destino en la peninsula?\n(1)Si \n(2)No \nOpción:");
-		this.destino = escaner3.nextInt();
+		int opcionDestino = escaner3.nextInt();
 		System.out.println();
 
-		if (playa == 1 && destino == 1) {
+		if (playa == 1 && opcionDestino == 1) {
 			System.out.println(
 					"La mejor opcion para ti, es un viaje a Andalucía. \nPara organizar tu viaje pulsa la opcion Viajar\n");
 		}
 
-		else if (playa == 1 && destino == 2) {
+		else if (playa == 1 && opcionDestino == 2) {
 			System.out.println(
 					"La mejor opcion para ti, es un viaje a Canarias. \nPara organizar tu viaje pulsa la opcion Viajar\n");
 		}
 
-		else if (playa == 2 && destino == 1) {
+		else if (playa == 2 && opcionDestino == 1) {
 			System.out.println("¿Prefieres un destino en la capital?\n(1)Si \n(2)No \nOpción: ");
 			int peninsula = escaner3.nextInt();
 			System.out.println();
@@ -167,7 +202,7 @@ public class menu_viajes extends Usuario {
 			}
 		}
 
-		else if (playa == 2 && destino == 2) {
+		else if (playa == 2 && opcionDestino == 2) {
 			System.err.println("Lo sentimos no hay viajes disponibles sin playa y fuera de la peninsula...\n");
 
 		} else {

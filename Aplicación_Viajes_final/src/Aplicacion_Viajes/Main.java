@@ -56,9 +56,10 @@ public abstract class Main {
 
 			while (salir1 == false) {
 
-				try {
+				//try {
 
 					Menu1.MenuViajes(indice_usuario, usuario0);
+					viajes.copiarArrayUsuarios(usuario0);
 
 					if (Menu1.opcion2 < 1 || Menu1.opcion2 > 5) {
 						System.err.println("Introduzca una opción valida entre 1 y 5\n");
@@ -74,6 +75,7 @@ public abstract class Main {
 							resultado = viajes.menuDestino();
 						}
 						viajes.menuFecha();
+						viajes.GuardarViaje(usuario0);
 						break;
 					}
 					case 2: {
@@ -140,8 +142,14 @@ public abstract class Main {
 									}
 								}
 							}
-
+							
 							case 4: {
+								viajes.historialViajes();
+								break;
+								
+							}
+
+							case 5: {
 								System.out.println("Volviendo al menú...\n");
 								salir2 = true;
 								break;
@@ -159,9 +167,10 @@ public abstract class Main {
 					}
 
 					}
-				} catch (Exception e) {
+				/*} catch (Exception e) {
 					System.err.println("Introduce una opción válida");
-				}
+					System.out.println(e);
+				}*/
 
 			}
 		}

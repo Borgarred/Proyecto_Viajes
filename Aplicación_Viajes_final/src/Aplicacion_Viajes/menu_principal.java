@@ -42,7 +42,7 @@ public class menu_principal extends Usuario {
 		Scanner escaner3 = new Scanner(System.in);
 
 		System.out.print("--------Menú Usuario-------"
-				+ "\n(1)-Ver Datos Usuario \n(2)-Cambiar Datos Usuario \n(3)-Eliminar Usuario \n(4)-Salir al menú viajes"
+				+ "\n(1)-Ver Datos Usuario \n(2)-Cambiar Datos Usuario \n(3)-Eliminar Usuario \n(4)-Historial de Viajes \n(5)-Salir al menú anterior"
 				+ "\n\nEscoja una opción: ");
 		this.opcion3 = escaner3.nextInt();
 

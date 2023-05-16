@@ -109,6 +109,7 @@ public abstract class Main {
 
 							case 2: {
 								usuario0.CambiarDatos();
+								System.out.println();
 								break;
 							}
 
@@ -117,13 +118,27 @@ public abstract class Main {
 							}
 
 							case 4: {
-								usuario0.EliminarUsuario();
-								salir2 = true;
-								salir1 = true;
-								break;
+
+								Scanner scEliminarUsuario = new Scanner(System.in);
+
+								System.err.println("¿Desea eliminar su Usuario actual de forma definitiva?"
+										+ "\nEscriba Si o No.");
+								String opcionEliminar = scEliminarUsuario.nextLine();
+
+								if (opcionEliminar.contentEquals("Si")) {
+									usuario0.EliminarUsuario();
+									salir2 = true;
+									salir1 = true;
+									break;
+
+								} else {
+									System.out.println("Volviendo al menú...");
+									break;
+								}
 							}
 
 							case 5: {
+								System.out.println("Volviendo al menú...");
 								salir2 = true;
 								break;
 							}
@@ -134,7 +149,7 @@ public abstract class Main {
 					}
 
 					case 5: {
-						System.out.print("¡Gracias por visitarnos, hasta pronto!");
+						System.out.println("¡Gracias por visitarnos, hasta pronto!\n");
 						salir1 = true;
 						break;
 					}

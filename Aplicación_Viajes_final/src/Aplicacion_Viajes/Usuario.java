@@ -127,67 +127,79 @@ public class Usuario {
 
 	public void CambiarDatos() {
 
-		Scanner scOpcion = new Scanner(System.in);
+		Scanner scOpcionCambiarDatos = new Scanner(System.in);
 		Scanner scCambiarDatos = new Scanner(System.in);
 
-		System.out.print(
-				"¿Qué dato desea cambiar?: \n(1)-Nombre y apellido \n(2)-Email \n(3)-Contraseña \n(4)-DNI \n(6)-Edad \nElija una opción: ");
-		int opcion = scOpcion.nextInt();
+		for (int i = 0; i < arrayUsuarios.length - 1; i++) {
+			if (arrayUsuarios[i] != null) {
+				if (arrayUsuarios[i].email.equals(this.email) && arrayUsuarios[i].contraseña.equals(this.contraseña)) {
 
-		switch (opcion) {
+					System.out.print(
+							"¿Qué dato desea cambiar?: \n(1)-Nombre y apellido \n(2)-Email \n(3)-Contraseña \n(4)-DNI \n(5)-Edad \nElija una opción: ");
+					int opcioCambiarDatos = scOpcionCambiarDatos.nextInt();
 
-		case 1: {
-			System.out.print("Introduzca su nuevo nombre: ");
-			this.nombre = scCambiarDatos.nextLine();
+					switch (opcioCambiarDatos) {
 
-			System.out.println();
+					case 1: {
+						System.out.print("\nIntroduzca su nuevo nombre: ");
+						this.nombre = scCambiarDatos.nextLine();
+						arrayUsuarios[i].nombre = this.nombre;
 
-			System.out.print("Introduzca sus nuevos apellidos: ");
-			this.apellidos = scCambiarDatos.nextLine();
-			break;
+						System.out.print("Introduzca sus nuevos apellidos: ");
+						this.apellidos = scCambiarDatos.nextLine();
+						arrayUsuarios[i].apellidos = this.apellidos;
+						break;
 
-		}
+					}
 
-		case 2: {
-			System.out.print("Introduzca su nuevo email: ");
-			this.email = scCambiarDatos.nextLine();
-			break;
-		}
+					case 2: {
+						System.out.print("\nIntroduzca su nuevo email: ");
+						this.email = scCambiarDatos.nextLine();
+						arrayUsuarios[i].email = this.email;
+						break;
+					}
 
-		case 3: {
+					case 3: {
 
-			boolean salir = false;
-			while (salir == false) {
+						boolean salir = false;
+						while (salir == false) {
 
-				String contraseña;
-				System.out.print("Introduce su antigua contraseña: ");
-				contraseña = scCambiarDatos.nextLine();
+							String contraseña;
+							System.out.print("\nIntroduce su antigua contraseña: ");
+							contraseña = scCambiarDatos.nextLine();
 
-				if (contraseña != this.contraseña) {
-					System.err.println("CONTRASEÑA INCORRECTA");
-				}
+							if (contraseña.contentEquals(this.contraseña)) {
+								System.out.print("Introduzca su nueva contraseña: ");
+								this.contraseña = scCambiarDatos.nextLine();
+								arrayUsuarios[i].contraseña = this.contraseña;
+								System.out.println();
+								salir = true;
+							}
 
-				else {
-					System.out.print("Introduzca su nueva contraseña: ");
-					this.contraseña = scCambiarDatos.nextLine();
-					salir = true;
+							else {
+								System.err.println("CONTRASEÑA INCORRECTA");
+							}
+						}
+						break;
+					}
+
+					case 4: {
+						System.out.print("\nIntroduzca su nuevo DNI: ");
+						this.DNI = scCambiarDatos.nextLine();
+						arrayUsuarios[i].DNI = this.DNI;
+						break;
+					}
+
+					case 5: {
+						System.out.print("\nIntroduzca su nuevo edad: ");
+						this.edad = scCambiarDatos.nextInt();
+						arrayUsuarios[i].edad = this.edad;
+						break;
+					}
+
+					}
 				}
 			}
-			break;
-		}
-
-		case 4: {
-			System.out.print("Introduzca su nuevo DNI: ");
-			this.DNI = scCambiarDatos.nextLine();
-			break;
-		}
-
-		case 5: {
-			System.out.print("Introduzca su nuevo edad: ");
-			this.edad = scCambiarDatos.nextInt();
-			break;
-		}
-
 		}
 
 	}
@@ -200,10 +212,14 @@ public class Usuario {
 			System.arraycopy(arrayUsuarios, 0, nuevoArray, 0, i);
 		}
 
+		if (nuevoArray.length > i) {
+			System.arraycopy(arrayUsuarios, i + 1, nuevoArray, i, nuevoArray.length - i - 1);
+		}
+
 		return nuevoArray;
 	}
 
-	public void EliminarUsuario() {
+	public boolean EliminarUsuario() {
 
 		DatosUsuario[] arrayResultante = new DatosUsuario[20];
 
@@ -223,7 +239,7 @@ public class Usuario {
 		this.DNI = null;
 		this.edad = 0;
 		System.err.println("Usuario eliminado... \nCerrando sesión...\n");
-
+		return true;
 	}
 
 	public void InsertarDatos(int indice) {

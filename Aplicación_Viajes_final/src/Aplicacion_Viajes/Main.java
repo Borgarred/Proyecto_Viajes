@@ -22,7 +22,7 @@ public abstract class Main {
 
 					Menu1.MenuInicio();
 					if (Menu1.opcion1 != 1 && Menu1.opcion1 != 2) {
-						System.err.println("Elija una de las opcióne correctamente \n");
+						System.err.println("Introduce una opción válida, (1 o 2)\n");
 					}
 
 					switch (Menu1.opcion1) {
@@ -59,23 +59,21 @@ public abstract class Main {
 				try {
 
 					Menu1.MenuViajes(indice_usuario, usuario0);
-					System.out.println();
 
 					if (Menu1.opcion2 < 1 || Menu1.opcion2 > 5) {
-						System.err.println("Introduzca una opción valida entre 1º y 5º");
+						System.err.println("Introduzca una opción valida entre 1 y 5\n");
 					}
 
 					switch (Menu1.opcion2) {
 
 					case 1: {
+
 						boolean resultado = false;
 
 						while (resultado == false) {
 							resultado = viajes.menuDestino();
-
-							if (resultado == true)
-								viajes.menuFecha();
 						}
+						viajes.menuFecha();
 						break;
 					}
 					case 2: {
@@ -114,31 +112,37 @@ public abstract class Main {
 							}
 
 							case 3: {
-								break;
-							}
-
-							case 4: {
 
 								Scanner scEliminarUsuario = new Scanner(System.in);
 
-								System.err.println("¿Desea eliminar su Usuario actual de forma definitiva?"
-										+ "\nEscriba Si o No.");
-								String opcionEliminar = scEliminarUsuario.nextLine();
+								boolean salir4 = false;
 
-								if (opcionEliminar.contentEquals("Si")) {
-									usuario0.EliminarUsuario();
-									salir2 = true;
-									salir1 = true;
-									break;
+								while (salir4 == false) {
 
-								} else {
-									System.out.println("Volviendo al menú...");
-									break;
+									System.err.println("¿Desea eliminar su Usuario actual de forma definitiva?"
+											+ "\nEscriba Si o No.");
+									String opcionEliminar = scEliminarUsuario.nextLine();
+
+									if (opcionEliminar.contentEquals("Si")) {
+										usuario0.EliminarUsuario();
+										salir2 = true;
+										salir1 = true;
+										salir4 = true;
+										break;
+
+									} else if (opcionEliminar.contentEquals("No")) {
+										salir4 = true;
+										break;
+
+									} else {
+										System.err.println("Introduzca correctamente (Si) o (No)\n");
+
+									}
 								}
 							}
 
-							case 5: {
-								System.out.println("Volviendo al menú...");
+							case 4: {
+								System.out.println("Volviendo al menú...\n");
 								salir2 = true;
 								break;
 							}
@@ -157,7 +161,6 @@ public abstract class Main {
 					}
 				} catch (Exception e) {
 					System.err.println("Introduce una opción válida");
-					System.out.println(e);
 				}
 
 			}

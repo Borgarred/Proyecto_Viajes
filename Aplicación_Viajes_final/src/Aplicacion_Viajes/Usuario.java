@@ -32,7 +32,7 @@ public class Usuario {
 	}
 
 	public void NuevoUsuario() {
-		
+
 		Scanner scNuevoUsuario = new Scanner(System.in);
 
 		int indice = 0;
@@ -83,7 +83,7 @@ public class Usuario {
 	}
 
 	public int IniciarSesion() {
-		
+
 		Scanner scInicioUsuario = new Scanner(System.in);
 
 		int indice = 0;
@@ -121,15 +121,15 @@ public class Usuario {
 
 	public void DatosUsuario() {
 
-		System.out.println("\nTus Datos: \n-Nombre: " + this.nombre + " " + this.apellidos + "\n-Email: " + this.email
-				+ "\n-DNI: " + this.DNI + "\n-Edad: " + this.edad);
+		System.out.println("Tus Datos: \n-Nombre: " + this.nombre + " " + this.apellidos + "\n-Email: " + this.email
+				+ "\n-DNI: " + this.DNI + "\n-Edad: " + this.edad + "\n");
 	}
 
 	public void CambiarDatos() {
 
 		Scanner scOpcion = new Scanner(System.in);
 		Scanner scCambiarDatos = new Scanner(System.in);
-		
+
 		System.out.print(
 				"¿Qué dato desea cambiar?: \n(1)-Nombre y apellido \n(2)-Email \n(3)-Contraseña \n(4)-DNI \n(6)-Edad \nElija una opción: ");
 		int opcion = scOpcion.nextInt();
@@ -139,7 +139,7 @@ public class Usuario {
 		case 1: {
 			System.out.print("Introduzca su nuevo nombre: ");
 			this.nombre = scCambiarDatos.nextLine();
-			
+
 			System.out.println();
 
 			System.out.print("Introduzca sus nuevos apellidos: ");
@@ -192,7 +192,29 @@ public class Usuario {
 
 	}
 
+	public DatosUsuario[] eliminarObjetoArray(DatosUsuario[] arrayUsuarios, int i) {
+
+		DatosUsuario[] nuevoArray = new DatosUsuario[arrayUsuarios.length];
+
+		if (i > 0) {
+			System.arraycopy(arrayUsuarios, 0, nuevoArray, 0, i);
+		}
+
+		return nuevoArray;
+	}
+
 	public void EliminarUsuario() {
+
+		DatosUsuario[] arrayResultante = new DatosUsuario[20];
+
+		for (int i = 0; i < arrayUsuarios.length - 1; i++) {
+			if (arrayUsuarios[i] != null) {
+				if (arrayUsuarios[i].email.equals(this.email) && arrayUsuarios[i].contraseña.equals(this.contraseña)) {
+					arrayResultante = eliminarObjetoArray(arrayUsuarios, i);
+				}
+			}
+		}
+		arrayUsuarios = arrayResultante;
 
 		this.email = null;
 		this.contraseña = null;
@@ -200,7 +222,7 @@ public class Usuario {
 		this.apellidos = null;
 		this.DNI = null;
 		this.edad = 0;
-		System.out.println("Usuario eliminado...");
+		System.err.println("Usuario eliminado... \nCerrando sesión...\n");
 
 	}
 
@@ -209,7 +231,7 @@ public class Usuario {
 		BufferedWriter out = null;
 
 		try {
-			out = new BufferedWriter(new FileWriter("C:\\Users\\garramiola.rebor\\Desktop\\SesionesRegistradas.txt"));
+			out = new BufferedWriter(new FileWriter("C:\\Users\\borja\\Desktop\\SesionesRegistradas.txt"));
 
 			for (int i = 0; i <= indice; i++) {
 				out.write("EMAIL:" + arrayUsuarios[i].getEmail() + " CONSTRASEÑA:" + arrayUsuarios[i].getContraseña()

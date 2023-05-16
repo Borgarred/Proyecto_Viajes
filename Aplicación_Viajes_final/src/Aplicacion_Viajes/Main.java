@@ -11,7 +11,7 @@ public abstract class Main {
 		menu_viajes viajes = new menu_viajes();
 
 		int indice_usuario = 0;
-		boolean salir = false, salir1 = false, salir2 = false, salir3 = false, salir4 = false;
+		boolean salir = false;
 
 		while (salir == false) {
 
@@ -49,8 +49,10 @@ public abstract class Main {
 			}
 		}
 		System.out.println();
+		
+		boolean salir1 = false;
 
-		while (salir2 == false) {
+		while (salir1 == false) {
 
 			try {
 				
@@ -85,7 +87,9 @@ public abstract class Main {
 
 				case 4: {
 
-					while (salir4 == false) {
+					boolean salir2 = false;
+					
+					while (salir2 == false) {
 
 						Menu1.MenuUsuario();
 						System.out.println();
@@ -116,8 +120,7 @@ public abstract class Main {
 						}
 
 						case 5: {
-							System.out.println();
-							salir4 = true;
+							salir2 = true;
 							break;
 						}
 
@@ -127,7 +130,7 @@ public abstract class Main {
 				}
 				case 5: {
 					System.out.print("¡Gracias por visitarnos, hasta pronto!");
-					salir2 = true;
+					salir1 = true;
 					break;
 				}
 

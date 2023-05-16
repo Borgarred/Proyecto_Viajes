@@ -57,8 +57,8 @@ public abstract class Main {
 				Menu1.opcion3 = 0;
 				Menu1.MenuViajes(indice_usuario, usuario0);
 				System.out.println();
-				if (Menu1.opcion2 < 1 || Menu1.opcion2 > 4) {
-					System.err.println("Introduzca una opción valida entre 1º y 4º");
+				if (Menu1.opcion2 < 1 || Menu1.opcion2 > 5) {
+					System.err.println("Introduzca una opción valida entre 1º y 5º");
 
 				}
 				switch (Menu1.opcion2) {

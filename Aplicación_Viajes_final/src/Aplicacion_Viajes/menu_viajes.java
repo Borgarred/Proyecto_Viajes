@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.Date;
 
-public class menu_viajes extends Usuario {
+public class menu_viajes{
 
 	protected Usuario usuario;
 	protected int tipo;
@@ -197,7 +197,7 @@ public class menu_viajes extends Usuario {
 					// Eliminar un elemento de la pila
 					String eliminado = pila.pop();
 					System.out.println("¡FELICIDADES! \nERES EL GANADOR DEL VIAJE A MALLORCA");
-					System.out.println("¡Perfecto, espera nuestra respuesta pronto!\n");
+					System.out.println("¡Te enviaremos todos los datos al email, espera nuestra respuesta pronto!\n");
 					resultado = true;
 					break;
 				}

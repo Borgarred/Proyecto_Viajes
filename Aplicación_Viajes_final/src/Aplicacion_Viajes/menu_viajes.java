@@ -25,6 +25,8 @@ public class menu_viajes extends Usuario {
 	public menu_viajes() {
 	}
 
+	/*Este método copia el arrayUsuarios de la clase padre Usuario y lo copia en arrayUsuarios
+	 *  de la subclase para poder operar con él dentro de esta clase*/
 	public void copiarArrayUsuarios(Usuario user) {
 
 		System.arraycopy(user.arrayUsuarios, 0, this.arrayUsuarios, 0, user.arrayUsuarios.length);
@@ -32,6 +34,7 @@ public class menu_viajes extends Usuario {
 		this.contraseña = user.contraseña;
 	}
 
+	/*Este método guarda los viajes creados en el primer registro nulo que encuentre en arrayViajes*/
 	public void GuardarViaje(Usuario user) {
 
 		if (this.arrayViajes[numeroViajes] == null) {
@@ -41,6 +44,7 @@ public class menu_viajes extends Usuario {
 		}
 	}
 
+	//Este método muestra un listado de los viajes relalizados por cada usuario
 	public void historialViajes() {
 
 		System.out.println("Historial de viajes:");
@@ -58,7 +62,7 @@ public class menu_viajes extends Usuario {
 		}
 	}
 	 
-	public boolean menuDestino() {//Este metodo abre el menú Viajar
+	public boolean menuDestino() {//Este metodo abre una selección donde se escogerá el destino del viaje creado
 
 		Scanner escaner1 = new Scanner(System.in);
 

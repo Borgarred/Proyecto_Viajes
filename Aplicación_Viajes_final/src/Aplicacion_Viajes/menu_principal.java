@@ -28,12 +28,11 @@ public class menu_principal extends Usuario {
 
 		Scanner escaner2 = new Scanner(System.in);
 
-		System.out.print("--------Menú Viajes-------\n"
-				+ "¡Hola! " + user.arrayUsuarios[indice].getNombre() + " elige una de nuestras opciones: "
+		System.out.print("--------Menú Viajes-------\n" + "¡Hola! " + user.arrayUsuarios[indice].getNombre()
+				+ " elige una de nuestras opciones: "
 				+ " \n(1)-Viajar \n(2)-Recomendaciones \n(3)-Sorteo \n(4)-Configuración del Usuario \n(5)-Salir"
-				+ "\n\nEscoja una opción: ");
+				+ "\nEscoja una opción: ");
 		this.opcion2 = escaner2.nextInt();
-		
 
 	}
 
@@ -41,9 +40,9 @@ public class menu_principal extends Usuario {
 
 		Scanner escaner3 = new Scanner(System.in);
 
-		System.out.print("--------Menú Usuario-------"
+		System.out.print("\n--------Menú Usuario-------"
 				+ "\n(1)-Ver Datos Usuario \n(2)-Cambiar Datos Usuario \n(3)-Eliminar Usuario \n(4)-Historial de Viajes \n(5)-Salir al menú anterior"
-				+ "\n\nEscoja una opción: ");
+				+ "\nEscoja una opción: ");
 		this.opcion3 = escaner3.nextInt();
 
 	}

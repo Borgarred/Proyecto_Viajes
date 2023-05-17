@@ -6,18 +6,23 @@ public abstract class Main {
 
 	public static void main(String[] args) {
 
+		//Obejtos creados a partir de las clases
 		menu_principal Menu1 = new menu_principal();
-		Usuario usuario0 = new Usuario(); // quitados los argumentos
+		Usuario usuario0 = new Usuario();
 		menu_viajes viajes = new menu_viajes();
 
 		int indice_usuario = 0;
 		boolean salir = false;
 
+		//While principal que repetirá todo el programa
 		while (salir == false) {
 
 			boolean salir3 = false;
+			
+			//While que repetirá el menú de inicio de sesión en caso de crear un nuevo Usuario para poder acceder con él o en caso de fallo
 			while (salir3 == false) {
 
+				//Try y catch que salta en caso de introducir una letra en el mení inicio de sesión
 				try {
 
 					Menu1.MenuInicio();
@@ -54,8 +59,10 @@ public abstract class Main {
 
 			boolean salir1 = false;
 
+			//While que repetirá el menú viajes en caso de finalizar una de las opciones o de error
 			while (salir1 == false) {
-
+				
+				//Try y catch que salta en caso de que falle alguna opción del menú viajes
 				try {
 
 					Menu1.MenuViajes(indice_usuario, usuario0);
@@ -65,6 +72,7 @@ public abstract class Main {
 						System.err.println("Introduzca una opción valida entre 1 y 5\n");
 					}
 
+					//Switch con las opciones del menú viajes
 					switch (Menu1.opcion2) {
 
 					case 1: {
@@ -78,10 +86,12 @@ public abstract class Main {
 						viajes.GuardarViaje(usuario0);
 						break;
 					}
+					
 					case 2: {
 						viajes.menuRecomendaciones();
 						break;
 					}
+					
 					case 3: {
 						viajes.menuSorteo();
 						break;
@@ -90,7 +100,8 @@ public abstract class Main {
 					case 4: {
 
 						boolean salir2 = false;
-
+						
+						//While que repetirá el menú Usuario en caso de finalizar una de las opciones o de error
 						while (salir2 == false) {
 
 							Menu1.MenuUsuario();
@@ -100,6 +111,7 @@ public abstract class Main {
 								System.err.println("Introduzca una opción valida entre 1º y 5º");
 							}
 
+							//Switch con las opciones del menú Usuario
 							switch (Menu1.opcion3) {
 
 							case 1: {
@@ -124,6 +136,7 @@ public abstract class Main {
 											+ "\nEscriba Si o No.");
 									String opcionEliminar = scEliminarUsuario.nextLine();
 
+									//Si se desea eliminar la cuenta, se cierra sesión y terminan todos los bucles para acabar en el menú incio de sesión
 									if (opcionEliminar.contentEquals("Si")) {
 										usuario0.EliminarUsuario();
 										salir2 = true;

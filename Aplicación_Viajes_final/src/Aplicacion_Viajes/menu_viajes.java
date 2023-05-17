@@ -55,8 +55,6 @@ public class menu_viajes extends Usuario {
 				}
 			}
 		}
-		System.out.println();
-
 	}
 
 	public boolean menuDestino() {
@@ -202,9 +200,9 @@ public class menu_viajes extends Usuario {
 
 		System.out.print("---RECOMENDACIONES---"
 				+ "\nPara recomedarte el mejor destino para ti, necesitamos hacerte algunas preguntas"
-				+ "¿Prefieres un destino con playa?\n(1)Si \n(2)No \nOpción: ");
+				+ "\n¿Prefieres un destino con playa?\n(1)Si \n(2)No \nOpción: ");
 		playa = escaner3.nextInt();
-		System.out.print("\n¿Prefieres un destino en la peninsula?\n(1)Si \n(2)No \nOpción:");
+		System.out.print("\n¿Prefieres un destino en la peninsula?\n(1)Si \n(2)No \nOpción: ");
 		int opcionDestino = escaner3.nextInt();
 		System.out.println();
 
@@ -258,7 +256,7 @@ public class menu_viajes extends Usuario {
 		cola.add("🎁");
 
 		// Imprimir la pila
-		System.out.println("¡Estamos sorteando un viaje a Mallorca!");
+		System.out.println("\n¡Estamos sorteando un viaje a Madrid!");
 		System.out.println("Para participar solo tienes que elegir un regalo, ¡Suerte!");
 		System.out.println(pila);
 

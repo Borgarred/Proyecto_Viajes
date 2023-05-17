@@ -109,7 +109,6 @@ public abstract class Main {
 
 							case 2: {
 								usuario0.CambiarDatos();
-								System.out.println();
 								break;
 							}
 

@@ -273,7 +273,7 @@ public class menu_viajes extends Usuario {
 				case 1: {
 					// Eliminar un elemento de la pila
 					String eliminado = pila.pop();
-					System.out.println("¡FELICIDADES! \nERES EL GANADOR DEL VIAJE A MALLORCA");
+					System.out.println("¡FELICIDADES! \nERES EL GANADOR DEL VIAJE A MADRID");
 					System.out.println("¡Perfecto, espera nuestra respuesta pronto!\n");
 					resultado = true;
 					break;

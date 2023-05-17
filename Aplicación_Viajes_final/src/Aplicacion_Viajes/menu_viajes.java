@@ -196,8 +196,8 @@ public class menu_viajes extends Usuario {
 
 	}
 
-	// Este metodo abre el menú Recomendaciones
-	public void menuRecomendaciones() {
+	
+	public void menuRecomendaciones() {// Este metodo abre el menú Recomendaciones
 
 		Scanner escaner3 = new Scanner(System.in);
 
@@ -241,8 +241,8 @@ public class menu_viajes extends Usuario {
 		}
 	}
 
-	//Este metodo abre el menú sorteo
-	public void menuSorteo() {
+	
+	public void menuSorteo() {//Este metodo abre el menú sorteo
 		// Pila y Cola
 		Scanner sc = new Scanner(System.in);
 

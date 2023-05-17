@@ -46,7 +46,8 @@ public class menu_viajes extends Usuario {
 
 		for (int i = 0; i <= numeroViajes; i++) {
 			if (this.arrayViajes[i] != null) {
-				if (arrayUsuarios[i].email.contentEquals(arrayViajes[i].usuario.email) && arrayUsuarios[i].contraseña.contentEquals(arrayViajes[i].usuario.contraseña)) {
+				if (this.email.contentEquals(arrayViajes[i].usuario.email)
+						&& this.contraseña.contentEquals(arrayViajes[i].usuario.contraseña)) {
 					System.out.println(
 							"COMUNIDAD: " + arrayViajes[i].comunidad + " LOCALIDAD: " + arrayViajes[i].localidad
 									+ " FECHA DE IDA: " + arrayViajes[i].FechaIda + " FECHA DE VUELTA: "
@@ -79,11 +80,18 @@ public class menu_viajes extends Usuario {
 
 					if (this.comunidad.equals("Andalucía")) {
 						System.out.print("\n--OPCIONES PARA VIAJAR EN ANDALUCIA--"
-								+ "\nPara el destino Andalucía tenemos viajes a Cadiz o Córdoba"
-								+ "\n¿Qué destino prefieres? \n(1)Cadiz \n(2)Córdoba \nOpción: ");
+								+ "\nPara el destino Andalucía tenemos viajes a Cádiz o Córdoba"
+								+ "\n¿Qué destino prefieres? \n(1)Cádiz \n(2)Córdoba \nOpción: ");
 						int opcionDestino = escaner1.nextInt();
 
 						if (opcionDestino == 1 || opcionDestino == 2) {
+							if (opcionDestino == 1) {
+								this.localidad = "Cádiz";
+							}
+
+							else if (opcionDestino == 2) {
+								this.localidad = "Córdoba";
+							}
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -100,6 +108,13 @@ public class menu_viajes extends Usuario {
 						int opcionDestino = escaner1.nextInt();
 
 						if (opcionDestino == 1 || opcionDestino == 2) {
+							if (opcionDestino == 1) {
+								this.localidad = "Tenerife";
+							}
+
+							else if (opcionDestino == 2) {
+								this.localidad = "La Palma";
+							}
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -116,6 +131,13 @@ public class menu_viajes extends Usuario {
 						int opcionDestino = escaner1.nextInt();
 
 						if (opcionDestino == 1 || opcionDestino == 2) {
+							if (opcionDestino == 1) {
+								this.localidad = "Madrid capital";
+							}
+
+							else if (opcionDestino == 2) {
+								this.localidad = "Getafe";
+							}
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;
@@ -132,6 +154,13 @@ public class menu_viajes extends Usuario {
 						int opcionDestino = escaner1.nextInt();
 
 						if (opcionDestino == 1 || opcionDestino == 2) {
+							if (opcionDestino == 1) {
+								this.localidad = "Cáceres";
+							}
+
+							else if (opcionDestino == 2) {
+								this.localidad = "Badajoz";
+							}
 							resultado = true;
 							salirMenuViajes = true;
 							salirOpciones = true;

@@ -56,7 +56,7 @@ public abstract class Main {
 
 			while (salir1 == false) {
 
-				//try {
+				try {
 
 					Menu1.MenuViajes(indice_usuario, usuario0);
 					viajes.copiarArrayUsuarios(usuario0);
@@ -130,23 +130,22 @@ public abstract class Main {
 										salir2 = true;
 										salir1 = true;
 										salir4 = true;
-										break;
 
 									} else if (opcionEliminar.contentEquals("No")) {
 										salir4 = true;
-										break;
 
 									} else {
 										System.err.println("Introduzca correctamente (Si) o (No)\n");
 
 									}
 								}
+								break;
 							}
-							
+
 							case 4: {
 								viajes.historialViajes();
 								break;
-								
+
 							}
 
 							case 5: {
@@ -167,10 +166,10 @@ public abstract class Main {
 					}
 
 					}
-				/*} catch (Exception e) {
+				} catch (Exception e) {
 					System.err.println("Introduce una opción válida");
-					System.out.println(e);
-				}*/
+
+				}
 
 			}
 		}

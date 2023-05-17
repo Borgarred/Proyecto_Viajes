@@ -148,14 +148,15 @@ public class Usuario {
 						System.out.print("Introduzca sus nuevos apellidos: ");
 						this.apellidos = scCambiarDatos.nextLine();
 						arrayUsuarios[i].apellidos = this.apellidos;
+						System.out.println("Nombre y apellidos cambiados...");
 						break;
-
 					}
 
 					case 2: {
 						System.out.print("\nIntroduzca su nuevo email: ");
 						this.email = scCambiarDatos.nextLine();
 						arrayUsuarios[i].email = this.email;
+						System.out.println("Email cambiado...");
 						break;
 					}
 
@@ -173,6 +174,7 @@ public class Usuario {
 								this.contraseña = scCambiarDatos.nextLine();
 								arrayUsuarios[i].contraseña = this.contraseña;
 								System.out.println();
+								System.out.println("Contraseña cambiada...");
 								salir = true;
 							}
 
@@ -187,6 +189,7 @@ public class Usuario {
 						System.out.print("\nIntroduzca su nuevo DNI: ");
 						this.DNI = scCambiarDatos.nextLine();
 						arrayUsuarios[i].DNI = this.DNI;
+						System.out.println("Cambiando DNI...");
 						break;
 					}
 
@@ -194,6 +197,7 @@ public class Usuario {
 						System.out.print("\nIntroduzca su nuevo edad: ");
 						this.edad = scCambiarDatos.nextInt();
 						arrayUsuarios[i].edad = this.edad;
+						System.out.println("Cambiando edad...");
 						break;
 					}
 

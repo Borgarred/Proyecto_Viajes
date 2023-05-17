@@ -122,7 +122,7 @@ public class Usuario {
 	public void DatosUsuario() {
 
 		System.out.println("Tus Datos: \n-Nombre: " + this.nombre + " " + this.apellidos + "\n-Email: " + this.email
-				+ "\n-DNI: " + this.DNI + "\n-Edad: " + this.edad + "\n");
+				+ "\n-DNI: " + this.DNI + "\n-Edad: " + this.edad);
 	}
 
 	public void CambiarDatos() {
@@ -173,8 +173,7 @@ public class Usuario {
 								System.out.print("Introduzca su nueva contraseña: ");
 								this.contraseña = scCambiarDatos.nextLine();
 								arrayUsuarios[i].contraseña = this.contraseña;
-								System.out.println();
-								System.out.println("Contraseña cambiada...");
+								System.out.println("\nContraseña cambiada...");
 								salir = true;
 							}
 

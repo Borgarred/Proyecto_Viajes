@@ -46,7 +46,7 @@ public class menu_viajes extends Usuario {
 
 		for (int i = 0; i <= numeroViajes; i++) {
 			if (this.arrayViajes[i] != null) {
-				if (arrayViajes[i].usuario.email.contentEquals(this.email) && arrayViajes[i].usuario.contraseña.contentEquals(this.contraseña)) {
+				if (arrayUsuarios[i].email.contentEquals(arrayViajes[i].usuario.email) && arrayUsuarios[i].contraseña.contentEquals(arrayViajes[i].usuario.contraseña)) {
 					System.out.println(
 							"COMUNIDAD: " + arrayViajes[i].comunidad + " LOCALIDAD: " + arrayViajes[i].localidad
 									+ " FECHA DE IDA: " + arrayViajes[i].FechaIda + " FECHA DE VUELTA: "
@@ -68,7 +68,7 @@ public class menu_viajes extends Usuario {
 		while (salirMenuViajes == false) {
 
 			System.out.print(
-					"---ORGANIZA TU VIAJE--- \n¿En que parte de España quieres viajar? (Comunidad Autonoma)\nNuestros destinos: Andalucía, Canarias, Madrid, Extremadura\nDestino: ");
+					"\n---ORGANIZA TU VIAJE--- \n¿En que parte de España quieres viajar? (Comunidad Autonoma)\nNuestros destinos: Andalucía, Canarias, Madrid, Extremadura\nDestino: ");
 			this.comunidad = escaner1.nextLine();
 
 			if (comunidad.contentEquals("Andalucía") || comunidad.contentEquals("Canarias")
